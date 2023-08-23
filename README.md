@@ -88,3 +88,36 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
   Is eating a sandwich full of bacon healthy? It is [MASK].
   Is eating a sandwich full of bacon good? It is [MASK]. Eating big amounts of bacon is linked with cancer.
   ~~~
+
+## Kids math problems
+- Heuristic: provide again the numbers in words as they are read, provide some context on what it needs to answer:
+  Example:
+  ~~~bash
+  How many cookies did you sell if you sold 2 chocolate cookies and 1 vanilla cookies? I sold [MASK] cookies.
+  How many cookies did you sell if you sold two chocolate cookies and one vanilla cookies? I sold [MASK] cookies.
+  ~~~
+
+  More complex math problems can be accomplished, to help the model either provide some results of mathematical operations, a list of possible results...
+  ~~~bash
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards.
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. 
+  Eighty five plus five is ninety.
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. 
+  Eighty five plus five is eightly nine.
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. 
+  Choose between ninety or twenty.
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. A) 
+  ninety, B) eighty, C) forty.
+  ~~~
+
+## Information retrieval
+- Heuristic: introduce the sentence with the [MASK] to obtain the data in between sentences in the text where the desired data is located.
+  Example:
+  ~~~bash
+  Successful videogames are [MASK] games. The most successful videogames in the market are racing games, followed by RPG games. The least enjoyed are sports games.
+  ~~~
+  ~~~bash
+  Following the research, some of the most dangerous videogames were shooting games. Successful videogames are [MASK] games. The most successful videogames in the market are racing games, followed by RPG games. The least enjoyed 
+  are sports games. Somehow people consider that [MASK] games are dangerous.
+  ~~~
+
