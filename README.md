@@ -50,6 +50,8 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
 
 ## Sentiment Analysis
 - Heuristic: provide the content to be classified, and afterwards fill it in with "It was [MASK]."
-  - Prompt template: CONTENTS. It was [MASK].
-
+  - Prompt template:
+    ~~~bash
+    CONTENTS. It was [MASK].
+    ~~~
 
