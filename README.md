@@ -89,13 +89,22 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
     symptoms: symptomA, symptomB. The diagnosis for the patient is [MASK].
     symptoms: symptomA, symptomB. The diagnosis for the patient is [MASK]. symptomA and symptomB are common DIAGNOSIS symptoms.
     ~~~
+  - Example:
+    ~~~bash
+    symptoms: headache, throat ache, muscle pain, fever. The diagnosis for the patient is [MASK].
+    Output: [unknown 0.168, unclear 0.049, simple 0.048, complete 0.048, approximate 0.022]
+    symptoms: headache, throat ache, muscle pain, fever. The diagnosis for the patient is [MASK]. fever and headache are common flu symptoms.
+    Output: [pneumonia 0.100, unknown 0.075, fever 0.048, positive 0.040, acute 0.037]
+    ~~~
 
 ## Adversarial influence
-- Heuristic: we can influence the model to output something different to what it thinks, by providing the adversarial content in the prompt (model jailbreaking):
+- Heuristic: we can influence the model to output something different to what it thinks, by providing the adversarial content in the prompt (model jailbreaking). Also, try to use synonyms to simplify the semantics (e.g.: use good or bad instead of healthy or unhealthy):
   Example:
   ~~~bash
   Is eating a sandwich full of bacon healthy? It is [MASK].
+  Output: [healthy 0.121, delicious 0.107, not 0.091, good 0.044, fine 0.025]
   Is eating a sandwich full of bacon good? It is [MASK]. Eating big amounts of bacon is linked with cancer.
+  Output: [not 0.123, bad 0.050, disgusting 0.049, good 0.039, okay 0.035]
   ~~~
 
 ## Kids math problems
