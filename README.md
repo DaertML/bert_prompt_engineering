@@ -45,5 +45,11 @@ to a different fine tuned version of the BERT family (there are some great examp
 We will try to solve some common NLP problems with BERT by using prompt engineering; we will try to go a bit beyond what is well known already,
 and try to come up with a list of techniques that we can follow to successfully prompt BERT models.
 
+# Use cases
+Let's try to find out great ways we can prompt BERT, in order to get good at different NLP use cases:
 
 ## Sentiment Analysis
+- Heuristic: provide the content to be classified, and afterwards fill it in with "It was [MASK]."
+  - Prompt template: <contents>. It was [MASK].
+
+
