@@ -121,3 +121,23 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
   are sports games. Somehow people consider that [MASK] games are dangerous.
   ~~~
 
+## Role playing. Reasoning
+- Heuristic: avoid lengthy descriptions, provide simple statements, in a similar way as you would to a T5 model. Actually doing "topic:list of things" is useful, for the model to learn the things that it can do in the roleplay.
+  Apparently it is better at doing role playing as a personal agent managing your mobile phone apps, choosing the best app for each use case, than knowing what tool to use to survive in a cave; it is likely, due to the
+  training data provided by Google to train the model.
+  Example:
+  ~~~bash
+  apps: calculator, calendar, search, ai. use the [MASK] app to find a restaurant.
+  apps: calculator, calendar, search, ai. use the [MASK] app to create a meeting. use calculator for math. use calendar for meetings.
+  ~~~
+
+  ~~~bash
+  tools: knife, lighter, water. You are thirsty, you use [MASK].
+  tools: knife, lighter, water. You find a spider, you use the [MASK] to kill it.
+  tools: shotgun, lighter. You find a spider, you use the [MASK] to kill the spider. shotgun kills panther, lighter kills spider.
+  ~~~
+- Heuristic: provide a list of simple sentence: Subject + Action + Complement, so that it learns about the context:
+  Example:
+  ~~~bash
+  knife does not kill panther. knife kills spider. water removes thirst. shotgun kills panther.  You find a panther, you use the [MASK] to kill the panther.
+  ~~~
