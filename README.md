@@ -27,3 +27,23 @@ somehow I have not found them, at least in the same abundance as for GPT models,
 
 With the success that we took from the repo bert_has_a_mouth, it is mandatory for us to try to squeeze even more the BERT models, and see
 what we can do about it.
+
+It is very likely, if not 100% true, that we can not prompt engineer BERT models in the same way as we prompt GPT models, as BERT models behave
+differently (by having context from the future and past words out of the MASK tokens and because BERT models have a different objective, and thus
+are trained differently). But we can try to make BERT models worthy (again). It is also very likely that we will not get into SOTA capabilities,
+somehow it is also true that to be SOTA, you need big GPUs/RAM/CPUs... so we should consider for the SOTAness, how many more resources are needed
+to achieve results with a certain percentage less (or hopefully more) capable.
+
+# Some preliminaries
+As it is likely that we can not prompt the BERT models in the same way as we prompt GPT like models, we need to help the BERT models in its task,
+in the same way as we help GPT like models in their task. For useful prompts to be for BERT models, we need to provide context before and after
+the masked tokens ([MASK]), and ask the model to fill in such masks.
+
+Again, as it was stated in bert_has_a_mouth; all the experiments will be done with bert-base-uncased, unless we say the contrary, and point you
+to a different fine tuned version of the BERT family (there are some great examples with models trained with specialized datasets).
+
+We will try to solve some common NLP problems with BERT by using prompt engineering; we will try to go a bit beyond what is well known already,
+and try to come up with a list of techniques that we can follow to successfully prompt BERT models.
+
+
+## Sentiment Analysis
