@@ -54,7 +54,44 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
     ~~~bash
     CONTENTS. It was [MASK].
     ~~~
-
+    Example:
+    ~~~bash
+    that was the first borderlands session in a long time where i actually had a really satisfying comba... It was [MASK].
+    Output:
+    [
+  {
+    "score": 0.13923655450344086,
+    "token": 6429,
+    "token_str": "amazing",
+    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was amazing."
+  },
+  {
+    "score": 0.0911802425980568,
+    "token": 12476,
+    "token_str": "awesome",
+    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was awesome."
+  },
+  {
+    "score": 0.07692314684391022,
+    "token": 3819,
+    "token_str": "perfect",
+    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was perfect."
+  },
+  {
+    "score": 0.05379732325673103,
+    "token": 2307,
+    "token_str": "great",
+    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was great."
+  },
+  {
+    "score": 0.04486403614282608,
+    "token": 9788,
+    "token_str": "incredible",
+    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was incredible."
+  }
+]
+    ~~~
+    
 ## Math
 - Heuristic: BERT may be better at math if we provide it with previous examples, or if we do the math by word:
   - Prompt template:
