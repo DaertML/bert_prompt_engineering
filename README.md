@@ -137,10 +137,13 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
   Example:
   ~~~bash
   Successful videogames are [MASK] games. The most successful videogames in the market are racing games, followed by RPG games. The least enjoyed are sports games.
+  Output: [racing 0.636, strategy 0.085, adventure 0.022, action 0.021, driving 0.018]
   ~~~
   ~~~bash
   Following the research, some of the most dangerous videogames were shooting games. Successful videogames are [MASK] games. The most successful videogames in the market are racing games, followed by RPG games. The least enjoyed 
   are sports games. Somehow people consider that [MASK] games are dangerous.
+  Output1: [racing 0.289, strategy 0.118, action 0.060, puzzle 0.048, adventure 0.034]
+  Output2: [racing 0.248, these 0.224, the 0.094, video 0.077, sports 0.059]
   ~~~
 
 ## Role playing. Reasoning
@@ -169,3 +172,19 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
   knife does not kill panther. knife kills spider. water removes thirst. shotgun kills panther.  You find a panther, you use the [MASK] to kill the panther.
   Output: [knife 0.907, dagger 0.015, spear 0.013, knives 0.008, blade 0.005]
   ~~~
+
+# Key points for prompt engineering BERT models
+After all the tests that we have performed, several general heuristics can be drawn on how to make the predictions by BERT models better, here are some of the takeaways:
+- Provide context for the generation both after and before the [MASK] tokens.
+- Add the [MASK] words in between sentences of the context, even though they may fit better at the end of the paragraph; again, the BERT models read in both directions, so it is better to give the [MASK] surrounded by context.
+- Provide simple list of elements and topics, avoid lengthy prompts, avoid lengthy generations.
+- It may require fine tuning with tiny datasets if we want to improve the performance of certain use cases; when doing role playing it is good at making simple choices, yet, it may be hard in some occasions to make the best
+  choice given the context.
+- Use synonyms if possible, and test the performance for different cases, to see if the model gets better the context.
+- Use word written numbers instead of numbers if possible.
+- Rephrase the problem with less semantic information (e.g.: instead of providing a whole context of elements, provide entitis like A does B, B does C...) if we feel it is getting saturated by information.
+
+# Conclusion
+It would be great if you, the reader, took the time to test these takeaways, played with them, got into other heuristics, provided them as a pull request, and made the documentation something richer. BERT
+models are not dead yet, there is some power we can take from them. The most impresive results if you ask me, are the ones in the Role playing section; I have seen similar results from GPT3 and GPT4, somehow
+I would have never thought that BERT could be that good in such cases.
