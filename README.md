@@ -57,39 +57,7 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
     Example:
     ~~~bash
     that was the first borderlands session in a long time where i actually had a really satisfying comba... It was [MASK].
-    Output:
-    [
-  {
-    "score": 0.13923655450344086,
-    "token": 6429,
-    "token_str": "amazing",
-    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was amazing."
-  },
-  {
-    "score": 0.0911802425980568,
-    "token": 12476,
-    "token_str": "awesome",
-    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was awesome."
-  },
-  {
-    "score": 0.07692314684391022,
-    "token": 3819,
-    "token_str": "perfect",
-    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was perfect."
-  },
-  {
-    "score": 0.05379732325673103,
-    "token": 2307,
-    "token_str": "great",
-    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was great."
-  },
-  {
-    "score": 0.04486403614282608,
-    "token": 9788,
-    "token_str": "incredible",
-    "sequence": "that was the first borderlands session in a long time where i actually had a really satisfying comba... it was incredible."
-  }
-]
+    Output:[amazing 0.139, awesome 0.091, perfect 0.077, great 0.054, incredible 0.045]
     ~~~
     
 ## Math
@@ -101,13 +69,17 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
     Example: providing some results in the context
     ~~~bash
     one plus one equals two. two plus two equals [MASK]. three plus one equals four.
+    Output: [three 0.764, four 0.111, one 0.048, two 0.039, five 0.020]
     ~~~
 - Avoid doing the math by number usually:
   Examples:
   ~~~bash
   2 + 2 = [MASK]
+  Output: [| 0.382, . 0.309, ; 0.186, ? 0.097, ! 0.023]
   2 + 2 = [MASK]. 1 + 1 = 2.
+  Output: [2 0.438, 1 0.382, 3 0.096, 0 0.034, 4 0.026]
   7 + 7 = 14. 8 + 8 = 16. 2 + 2 = [MASK]. 1 + 1 = 2.
+  Output: [2 0.354, 3 0.213, 1 0.187, 4 0.081, 5 0.037]
   ~~~
 
 ## Illness diagnosis
