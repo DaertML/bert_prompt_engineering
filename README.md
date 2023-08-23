@@ -55,3 +55,36 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
     CONTENTS. It was [MASK].
     ~~~
 
+## Math
+- Heuristic: BERT may be better at math if we provide it with previous examples, or if we do the math by word:
+  - Prompt template:
+    ~~~bash
+    A plus B equals [MASK]
+    ~~~
+    Example: providing some results in the context
+    ~~~bash
+    one plus one equals two. two plus two equals [MASK]. three plus one equals four.
+    ~~~
+- Avoid doing the math by number usually:
+  Examples:
+  ~~~bash
+  2 + 2 = [MASK]
+  2 + 2 = [MASK]. 1 + 1 = 2.
+  7 + 7 = 14. 8 + 8 = 16. 2 + 2 = [MASK]. 1 + 1 = 2.
+  ~~~
+
+## Illness diagnosis
+- Heuristic: provide simple lists of data after a subject and ":". Separate different lists of data with ".". Avoid capital letters. Feed some knowledge from the field after the [MASK].
+  - Prompt template:
+    ~~~bash
+    symptoms: symptomA, symptomB. The diagnosis for the patient is [MASK].
+    symptoms: symptomA, symptomB. The diagnosis for the patient is [MASK]. symptomA and symptomB are common DIAGNOSIS symptoms.
+    ~~~
+
+## Adversarial influence
+- Heuristic: we can influence the model to output something different to what it thinks, by providing the adversarial content in the prompt (model jailbreaking):
+  Example:
+  ~~~bash
+  Is eating a sandwich full of bacon healthy? It is [MASK].
+  Is eating a sandwich full of bacon good? It is [MASK]. Eating big amounts of bacon is linked with cancer.
+  ~~~
