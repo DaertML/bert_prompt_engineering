@@ -112,20 +112,24 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
   Example:
   ~~~bash
   How many cookies did you sell if you sold 2 chocolate cookies and 1 vanilla cookies? I sold [MASK] cookies.
+  Output: [4 0.055, 2 0.055, three 0.046, 10 0.045, two 0.044]
   How many cookies did you sell if you sold two chocolate cookies and one vanilla cookies? I sold [MASK] cookies.
+  Output: [three 0.153, two 0.121, four 0.104, six 0.095, five 0.070]
   ~~~
 
   More complex math problems can be accomplished, to help the model either provide some results of mathematical operations, a list of possible results...
   ~~~bash
   The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards.
-  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. 
-  Eighty five plus five is ninety.
-  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. 
-  Eighty five plus five is eightly nine.
-  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. 
-  Choose between ninety or twenty.
+  Output: [120 0.022, 200 0.018, 100 0.016, 300 0.013, 150 0.013]
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. Eighty five plus five is ninety.
+  Output: [ninety 0.120, eighty 0.080, sixty 0.042, seventy 0.032, fifty 0.031]
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. Eighty five plus five is eightly nine.
+  Output: [eighty 0.056, 120 0.023, twenty 0.022, fifty 0.022, sixty 0.021]
+  The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. Choose between ninety or twenty.
+  Output: [twenty 0.046, ten 0.030, ninety 0.030, 120 0.026, fifty 0.026]
   The hobby store normally sells eighty five trading cards per month. In June, the hobby store sold five more trading cards than normal. In total, how many trading cards did the hobby store sell in June? It sold [MASK] cards. A) 
   ninety, B) eighty, C) forty.
+  Output: [eighty 0.053, forty 0.039, sixty 0.039, ninety 0.039, seventy 0.038]
   ~~~
 
 ## Information retrieval
@@ -146,16 +150,22 @@ Let's try to find out great ways we can prompt BERT, in order to get good at dif
   Example:
   ~~~bash
   apps: calculator, calendar, search, ai. use the [MASK] app to find a restaurant.
+  Output: [search 0.136, menu 0.069, mobile 0.069, restaurant 0.053, web 0.047]
   apps: calculator, calendar, search, ai. use the [MASK] app to create a meeting. use calculator for math. use calendar for meetings.
+  Output: [calendar 0.345, web 0.087, search 0.084, google 0.046, facebook 0.036]
   ~~~
 
   ~~~bash
   tools: knife, lighter, water. You are thirsty, you use [MASK].
+  Output: [water 0.201, it 0.168, food 0.046, them 0.040, weapons 0.023]
   tools: knife, lighter, water. You find a spider, you use the [MASK] to kill it.
+  Output: [knife 0.228, stick 0.054, light 0.033, spear 0.023, spider 0.019]
   tools: shotgun, lighter. You find a spider, you use the [MASK] to kill the spider. shotgun kills panther, lighter kills spider.
+  Output: [shotgun 0.751, gun 0.047, weapon 0.029, hammer 0.023, rifle 0.020]
   ~~~
 - Heuristic: provide a list of simple sentence: Subject + Action + Complement, so that it learns about the context:
   Example:
   ~~~bash
   knife does not kill panther. knife kills spider. water removes thirst. shotgun kills panther.  You find a panther, you use the [MASK] to kill the panther.
+  Output: [knife 0.907, dagger 0.015, spear 0.013, knives 0.008, blade 0.005]
   ~~~
